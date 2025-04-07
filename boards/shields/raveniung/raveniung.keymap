@@ -16,22 +16,22 @@
 
 // Layers
 // Win and Linux
-#define DEF     0
-#define NAV     1
-#define SYM     2
-#define NUM     3
-#define FN      4
-#define SET     5
+#define DEF     0 // Default
+#define NAV     1 // Navigation
+#define SYM     2 // Symbols
+#define NUM     3 // Numbers
+#define FN      4 // Function
+#define SET     5 // Settings
 
 // Global
-#define MSE     6
-#define SCRL    7
+#define MSE     6 // Mouse
+#define SCRL    7 // Scroll
 
 // Special shortcuts
 #define ________     &trans
 #define TODO         &trans
 #define DEL_W        &kp LC(BSPC)
-#define SPACE_SYM    &lt SYM SPACE
+#define SPACE_SYM    &lt SYM SPACE // &lt = "layer tap": switch so symbol layer when held
 #define Q_MSE        &lt MSE Q
 #define A_NAV        &lt NAV A
 #define EXT_ON       &ext_power EP_ON
@@ -47,24 +47,24 @@
 #define BT_CLEAR   &bt BT_CLR
 
 // home row mod left
-#define ALT_S &hm LALT S
-#define CTL_D &hm LCTRL D
-#define SFT_F &hm LSHIFT F
-#define GUI_Y &hm LGUI Y
+#define ALT_S &hm LALT S // &hm = home row mod > Alt + S
+#define CTL_D &hm LCTRL D // Ctrl + D
+#define SFT_F &hm LSHIFT F // Shift + F
+#define GUI_Y &hm LGUI Y // GUI + Y
 
 // home row mod right
-#define SFT_J     &hm RSHIFT J
-#define CTL_K     &hm RCTRL K
-#define RALT_L    &hm RALT L
-#define LALT_OE   &hm LALT DE_ODIA
-#define LGUI_UE   &hm LGUI DE_UDIA
+#define SFT_J     &hm RSHIFT J // Shift + J
+#define CTL_K     &hm RCTRL K // Ctrl + K
+#define RALT_L    &hm RALT L // Alt + L
+#define LALT_OE   &hm LALT DE_ODIA // Alt + Ö
+#define LGUI_UE   &hm LGUI DE_UDIA // GUI + Ü
 
-&sk {
-        release-after-ms = <3000>;
+&sk { // sticky key
+        release-after-ms = <3000>; 
 };
 
 / {
-    glidepoint_listener {
+    glidepoint_listener { // touchpad
         compatible = "zmk,input-listener";
         device = <&glidepoint>;
         input-processors 
@@ -72,7 +72,7 @@
           = <&zip_xy_scaler 2 1>;
 
         scroll {
-            layers = <SCRL>;
+            layers = <SCRL>; // activate scroll layer when using glidepoint 
             input-processors
               = <&zip_xy_scaler 1 32>
               , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> /* natural scroll */
